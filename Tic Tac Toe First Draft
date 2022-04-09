@@ -1,0 +1,448 @@
+print("             WELCOME TO THE TIC TAC TOE GAME                   ")
+print("\n")
+print("""                       1     2     3
+                          |     |
+                   1      |     |     
+                     _____|_____|_____
+                          |     |     
+                   2      |     |     
+                     _____|_____|_____
+                          |     |     
+                   3      |     |     
+                          |     |     """)
+print("\n")
+print("""1. The game is played on a grid that's 3 squares by 3 squares.
+
+2. You can be either X or O, your friend (or the computer) will be the the remaining choice. Players take turns putting their marks in empty squares.
+
+3. The first player to get 3 of his/her marks in a row (up, down, across, or diagonally) is the winner.
+
+4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+5. You can choose which empty square by inputing row,column.""")
+print("\n")
+
+choice_0=input("""                  Do you want to play with
+                       1. Multiplayer
+                       2. VS Computer
+                               """)
+
+#taker function assigns either x or o for the player 1
+def taker():
+    player=str(input("""               Do you want to play with O or X?
+                               """))
+    if player=="o" or player=="O":
+        global player1_val
+        player1_val="O"
+    elif player=="x" or player=="X":
+        player1_val="X"
+    else:
+        print("              You can only play with either O or X")
+        taker() 
+        
+#check function checks all the boundary conditions and declares the winner or draw
+def check():
+    if values.get('one')==values.get('two') and values.get('two')==values.get('three'):
+        if checker.get('one') in taken and checker.get('two') in taken and checker.get('three') in taken:
+            if values.get('one')==player1_val:
+                print("The winner is",player1_name)
+                global winner
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('four')==values.get('five') and values.get('five')==values.get('six'):
+        if checker.get('four') in taken and checker.get('five') in taken and checker.get('six') in taken:
+            if values.get('four')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('seven')==values.get('eight') and values.get('eight')==values.get('nine'):
+        if checker.get('seven') in taken and checker.get('eight') in taken and checker.get('nine') in taken:
+            if values.get('seven')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+                    
+    elif values.get('one')==values.get('four') and values.get('four')==values.get('seven'):
+        if checker.get('one') in taken and checker.get('four') in taken and checker.get('seven') in taken:
+            if values.get('one')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('two')==values.get('five') and values.get('five')==values.get('eight'):
+        if checker.get('two') in taken and checker.get('five') in taken and checker.get('eight') in taken:
+            if values.get('two')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('three')==values.get('six') and values.get('six')==values.get('nine'):
+        if checker.get('three') in taken and checker.get('six') in taken and checker.get('nine') in taken:
+            if values.get('three')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('one')==values.get('five') and values.get('five')==values.get('nine'):
+        if checker.get('one') in taken and checker.get('five') in taken and checker.get('nine') in taken:
+            if values.get('one')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+
+    elif values.get('three')==values.get('five') and values.get('five')==values.get('seven'):
+        if checker.get('three') in taken and checker.get('five') in taken and checker.get('seven') in taken:
+            if values.get('three')==player1_val:
+                print("The winner is",player1_name)
+                winner="yes"
+            else:
+                print("The winner is",player2_name)
+                winner="yes"
+                    
+    elif len(usable)==0:
+        print("The match was draw")
+        winner="yes"
+            
+    else:
+        pass
+
+def bot_turn():
+    if values.get('one')==values.get('two'):
+        if checker.get('one') in taken and checker.get('two') in taken:
+            values['three']=bot_value
+            temp=checker.value['three']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('two')==values.get('three'):
+        if checker.get('two') in taken and checker.get('three') in taken:
+            values['one']=bot_value
+            temp=checker.value['one']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('one')==values.get('three'):
+        if checker.get('one') in taken and checker.get('three') in taken:
+            values['two']=bot_value
+            temp=checker.value['two']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('four')==values.get('five'):
+        if checker.get('four') in taken and checker.get('five') in taken:
+            values['six']=bot_value
+            temp=checker.value['six']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('five')==values.get('six'):
+        if checker.get('five') in taken and checker.get('six') in taken:
+            values['four']=bot_value
+            temp=checker.value['four']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('four')==values.get('six'):
+        if checker.get('four') in taken and checker.get('six') in taken:
+            values['five']=bot_value
+            temp=checker.value['five']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('seven')==values.get('eight'):
+        if checker.get('seven') in taken and checker.get('eight') in taken:
+            values['nine']=bot_value
+            temp=checker.value['nine']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('eight')==values.get('nine'):
+        if checker.get('eight') in taken and checker.get('nine') in taken:
+            values['seven']=bot_value
+            temp=checker.value['seven']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('seven')==values.get('nine'):
+        if checker.get('seven') in taken and checker.get('nine') in taken:
+            values['eight']=bot_value
+            temp=checker.value['eight']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('one')==values.get('four'):
+        if checker.get('one') in taken and checker.get('foue') in taken:
+            values['seven']=bot_value
+            temp=checker.value['seven']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('four')==values.get('seven'):
+        if checker.get('four') in taken and checker.get('seven') in taken:
+            values['one']=bot_value
+            temp=checker.value['one']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('one')==values.get('seven'):
+        if checker.get('one') in taken and checker.get('seven') in taken:
+            values['four']=bot_value
+            temp=checker.value['four']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('two')==values.get('five'):
+        if checker.get('two') in taken and checker.get('five') in taken:
+            values['eight']=bot_value
+            temp=checker.value['eight']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+    
+    elif values.get('five')==values.get('eight'):
+        if checker.get('five') in taken and checker.get('eight') in taken:
+            values['two']=bot_value
+            temp=checker.value['two']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('two')==values.get('eight'):
+        if checker.get('two') in taken and checker.get('eight') in taken:
+            values['five']=bot_value
+            temp=checker.value['five']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('three')==values.get('six'):
+        if checker.get('three') in taken and checker.get('six') in taken:
+            values['nine']=bot_value
+            temp=checker.value['nine']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('six')==values.get('nine'):
+        if checker.get('six') in taken and checker.get('nine') in taken:
+            values['three']=bot_value
+            temp=checker.value['three']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+    
+    elif values.get('three')==values.get('nine'):
+        if checker.get('three') in taken and checker.get('nine') in taken:
+            values['six']=bot_value
+            temp=checker.value['six']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('one')==values.get('five'):
+        if checker.get('one') in taken and checker.get('five') in taken:
+            values['nine']=bot_value
+            temp=checker.value['nine']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('five')==values.get('nine'):
+        if checker.get('five') in taken and checker.get('nine') in taken:
+            values['one']=bot_value
+            temp=checker.value['one']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('one')==values.get('nine'):
+        if checker.get('one') in taken and checker.get('nine') in taken:
+            values['five']=bot_value
+            temp=checker.value['five']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+    
+    elif values.get('three')==values.get('five'):
+        if checker.get('three') in taken and checker.get('five') in taken:
+            values['seven']=bot_value
+            temp=checker.value['seven']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('five')==values.get('seven'):
+        if checker.get('five') in taken and checker.get('seven') in taken:
+            values['three']=bot_value
+            temp=checker.value['three']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)
+          
+    elif values.get('three')==values.get('seven'):
+        if checker.get('three') in taken and checker.get('seven') in taken:
+            values['five']=bot_value
+            temp=checker.value['five']
+            taken.append(temp)
+            usable.remove(temp)
+            print("                     MAD BOT's choice is",temp)    
+          
+    else:
+        temp=random.choice(usable)
+        taken.append(temp)
+        usable.remove(temp)
+        for i in checker:        
+        if checker.get(i)==temp:
+            values[i]=bot_value
+            print("                     MAD BOT's choice is",temp)    
+        
+#count variable is used to determine the match number
+count=1
+
+#prin function prints the tic tac toe grid with the updated values
+def prin():
+    print("""                            |     |
+                        """,values.get('one')," | ",values.get('two')," | ",values.get('three'),"""  
+                       _____|_____|_____
+                            |     |     
+                        """,values.get('four')," | ",values.get('five')," | ",values.get('six'),"""  
+                       _____|_____|_____
+                            |     |     
+                        """,values.get('seven')," | ",values.get('eight')," | ",values.get('nine'),"""  
+                            |     |     """)
+#player1_turn is a functions to take input from player and update the tic tac toe grid
+def player1_turn():
+    print("                        ",player1_name,"'s turn")
+    row,column=eval(input("""                     Enter the row, column
+                              """))
+    temp=str(row)+"-"+str(column)
+    if usable.count(temp)>0:
+        taken.append(temp)
+        usable.remove(temp)
+        for i in checker:
+            if checker.get(i)==temp:
+                values[i]=player1_val
+                prin()
+                check()
+    else:
+        print("                  Enter only the free choices")
+        player1_turn()
+
+#importing random module for the vs computer option
+import random
+
+if choice_0=="1" or choice_0=="Multiplayer" or choice_0=="multiplayer":    
+    player1_name=input("""                  Player 1 enter your name
+                             """)
+    taker()
+    
+    player2_name=input("""                  Player 2 enter your name
+                             """)
+    if player1_val=="O":
+        player2_val="X"
+    else:
+        player2_val="O"
+    while True:
+        values=dict.fromkeys(["one","two","three","four","five","six","seven","eight","nine"]," ")
+        usable=["1-1","1-2","1-3","2-1","2-2","2-3","3-1","3-2","3-3"]
+        checker=dict(one="1-1",two="1-2",three="1-3",four="2-1",five="2-2",six="2-3",seven="3-1",eight="3-2",nine="3-3")
+        taken=[]
+        winner="no"
+        prin()
+        while winner!="yes":
+            player1_turn()
+
+            def player2_turn():
+                print("                        ",player2_name,"'s turn")
+                row,column=eval(input("""                     Enter the row, column
+                               """))
+                temp=str(row)+"-"+str(column)
+                if usable.count(temp)>0:
+                    taken.append(temp)
+                    usable.remove(temp)
+                    for i in checker:
+                        if checker.get(i)==temp:
+                            values[i]=player2_val
+                            prin()
+                            check()
+                else:
+                    print("                  Enter only the free choices")
+                    player2_turn()
+
+            player2_turn()
+           
+        #this if condition either continues the next match of the game or ends the game on the choice of the player     
+        if winner=="yes":
+            choice=input("Do you want to play another match?")
+            if choice=="yes" or choice=="Yes" or choice=="YES":
+                count+=1
+                print("MATCH",count)
+                continue
+            else:
+                print("THANK YOU FOR PLAYING")
+                break
+
+elif choice_0=="2" or choice_0=="vs computer" or choice_0=="computer":
+    player1_name=input("""                       Player 1 enter your name
+                                  """)
+    taker()
+    
+    while True:
+        values=dict.fromkeys(["one","two","three","four","five","six","seven","eight","nine"]," ")
+        usable=["1-1","1-2","1-3","2-1","2-2","2-3","3-1","3-2","3-3"]
+        checker=dict(one="1-1",two="1-2",three="1-3",four="2-1",five="2-2",six="2-3",seven="3-1",eight="3-2",nine="3-3")
+        taken=[]
+        winner="no"
+        prin()
+        
+        #this block of code assigns either x or o to player 2 on the basis of the choice of player 1
+        player2_name="MAD BOT"
+        if player1_val=="O":
+            bot_value="X"
+        else:
+            bot_value="O"
+        while winner!="yes":
+            player1_turn()
+            print("                       ",player2_name,"'s turn")
+            bot_turn()
+            prin()
+            check()
+        
+        #this if condition either continues the next match of the game or ends the game on the choice of the player     
+        if winner=="yes":
+            choice=input("Do you want to play another match?")
+            if choice=="yes" or choice=="Yes" or choice=="YES":
+                count+=1
+                print("MATCH",count)
+                continue
+            else:
+                print("THANK YOU FOR PLAYING")
+                break 
